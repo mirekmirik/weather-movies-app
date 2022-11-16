@@ -1080,6 +1080,7 @@ hr {
     .radio-input__question {
         font-size: 12px;
         margin-bottom: 5px;
+        max-width: 200px;
     }
     input[type=radio] {
         width: 12px;
