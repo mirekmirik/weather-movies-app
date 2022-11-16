@@ -1,0 +1,1024 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.none {
+    display: none;
+}
+
+
+body {
+    /* padding: 35px 35px; */
+    margin: 0 auto;
+    height: 100vh;
+    /* overflow: hidden; */
+    /* background-color: rgba(49, 29, 69, 0.616); */
+    /* position: relative; */
+    background-color: rgb(31, 29, 29);
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-solid {
+    font-size: 35px;
+    cursor: pointer;
+
+}
+
+.fa-solid:hover {
+    opacity: 0.7;
+}
+
+.main__question--active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    /* width: 750px; */
+    /* height: 450px; */
+    /* border: 2px solid black; */
+    overflow: hidden;
+    z-index: 99;
+
+    
+} 
+
+.img__question {
+    width: 1000px; 
+    height: 500px;
+    border-radius: 10px; 
+    margin-bottom: 20px;
+    box-shadow: rgb(0 0 0 / 45%) 10px 30px 40px -30px; 
+    font-family: monospace;
+}
+
+.next-background {
+    display: flex;
+    align-items: center;
+
+}
+
+.next {
+    padding: 10px 20px;
+    width: 250px;
+    font-size: 25px;
+    font-family: monospace;
+    border-radius: 25px;
+    background-color: yellow;
+    border-style: none;
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+.next:hover {
+    background-color: bisque;
+    opacity:0.7;
+
+    /* border: 1px solid black; */
+}
+
+
+.form__weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-input__question {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+
+.text__question {
+    font-size: 25px;
+    margin-bottom: 10px;
+    /* color: #fff; */
+};
+
+
+
+
+/* Input radio */
+
+input {
+
+    /* The native appearance is hidden */
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+  
+    /* For a circular appearance we need a border-radius. */
+    border-radius: 50%;
+  
+    /* The background will be the radio dot's color. */
+    background: #fdfefded;
+  
+    /* The border will be the spacing between the dot and the outer circle */
+    border: 1px solid #FFF;
+    /* border: 3px solid rgb(48, 35, 35); */
+
+  
+    /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+    box-shadow: 0 0 0 1px #4ce17b;
+  }
+
+input:hover {
+    opacity: 0.8;
+    /* background-color: #23caf4; */
+
+}
+
+  input:checked {
+    /* The native appearance is hidden */
+    transition: 0.3s;
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+  
+    /* For a circular appearance we need a border-radius. */
+    border-radius: 50%;
+  
+    /* The background will be the radio dot's color.
+    background: #0a030033;
+  
+    /* The border will be the spacing between the dot and the outer circle */
+    /* border: 3px solid rgb(48, 35, 35); */
+  
+    /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+    /* box-shadow: 0 0 0 1px #5db980;  */
+
+
+    /* The background will be the radio dot's color. */
+    background: yellowgreen;
+  
+    /* The border will be the spacing between the dot and the outer circle */
+    /* border: 3px solid #FFF; */
+    border: 2px solid #23caf4;
+    /* border: 1px solid rgb(48, 35, 35); */
+
+  
+    /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+    box-shadow: 0 0 0 1px #4ce17b;
+  }
+
+label {
+    margin-right: 15px;
+}
+
+.recommend-film {
+    padding: 15px 15px;
+    width: 1400px;
+    min-height: 100%;
+    /* background-color: rgb(37, 35, 35);
+    box-shadow: rgb(0 0 0 / 45%) 10px 30px 40px -30px; */
+
+}
+
+.recommend-film__text {
+    /* background-color: white ; */
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+}
+
+.recommend-film__weather-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.second-section {
+    display: none;
+    justify-content: center;
+    height: 100vh;
+    /* background-color: rgb(48, 50, 50); */
+    /* height: 100vh; */
+}
+
+.weather__desc {
+    font-size: 45px;
+    background-color: orange;
+    opacity:1;
+    margin-bottom: 20px;
+    border-radius: 25px; 
+    padding: 15px 15px;
+}
+
+.about-movie {
+    position: relative;
+}
+
+
+.about-movie__text {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.about-movie__text--description {
+    color: white;
+    font-size: 17px;
+    margin-bottom: 15px;
+    max-width: 900px;
+}
+
+
+
+.about-movie__img-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.about-movie__img {
+    width: 750px;
+    height: 500px;
+    /* position: relative; */
+
+}
+
+.about-movie__text--title {
+    margin-right: 30px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    /* max-width: 400px; */
+}
+ 
+.movie {
+    position: relative;
+}
+
+.about-movie__text--release-data {
+    position: absolute;
+    top: 0px;
+    left: 70%;
+    border: 3px solid white;
+    padding: 10px 10px;
+    border-radius: 25px;
+}
+
+.about-movie__tagline-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-movie__text--tagline {
+    display: inline-block;
+    border-radius: 15px;
+    padding: 5px 5px;
+    background-color: antiquewhite;
+    color: black;
+}
+
+.about-movie__text--tagline:hover {
+    opacity: 0.7;
+}
+
+
+.recommend-film__text-wrapper {
+    max-width: 360px;
+    margin-bottom: 15px;
+}
+
+
+.recommend-film__weather-icon {
+    width: 25px;
+    height: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Animated background */
+
+body{
+    font-family: 'Exo', sans-serif;
+}
+
+
+.context {
+    width: 100%;
+    position: absolute;
+    top:50vh;
+    
+}
+
+.context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+}
+
+
+
+
+
+
+.area{
+    transition: 0.3s;
+    background: #4e54c8;  
+    /* background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);   */
+    width: 100%;
+    height:100vh;
+    
+   
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(54, 37, 37, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+
+
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 1s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+.circles li:nth-child(11){
+    top: 85%;
+    left: 70%;
+    width: 40px;
+    height: 40px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+
+
+/* Animated inputs-radio */
+
+
+
+/* 
+.weather__name {
+    font-size: 45px;
+    
+} */
+
+
+
+/* @media screen and (max-width: 1535) {
+    .recommend-film__text-wrapper .recommend-film__text { 
+      font-size: 15px;
+    } 
+    .recommend-film {
+      width: 1200px;
+    }
+} */
+
+@media (max-width: 1336px) {
+    .img__question {
+        height: 300px;
+        width: 700px;
+    }
+
+    .weather__desc {
+        font-size: 27px;
+    }
+
+    .text__question {
+        font-size: 20px;
+    }
+
+    
+}
+
+@media (max-width: 1100px) {
+
+    .recommend-film  {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 5px;
+        /* width: 700px; */
+    }
+
+    .recommend-film__text {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .about-movie__text--description {
+        max-width: 360px;
+        font-size: 16px;
+    }
+
+
+    .about-movie__text--release-data {
+        padding: 5px 5px;
+        border-radius: 25px;
+        position: static;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .about-movie__text--tagline {
+        font-size: 12px;
+    }
+
+    .recommend-film__text-wrapper {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text {
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+
+    
+}
+
+@media  ( max-width: 1280px ) {
+    .recommend-film  {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 5px;
+        /* width: 700px; */
+    }
+
+    .recommend-film__text {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .about-movie__text--description {
+        max-width: 360px;
+        font-size: 16px;
+    }
+
+
+    .about-movie__text--release-data {
+        padding: 5px 5px;
+        border-radius: 25px;
+        position: static;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .about-movie__text--tagline {
+        font-size: 12px;
+    }
+
+    .recommend-film__text-wrapper {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text {
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+
+    .main {
+        align-items: stretch;
+        padding-top: 15px;
+    }
+}
+
+
+@media (max-width: 791px) {
+    .recommend-film  {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 5px;
+        /* width: 700px; */
+    }
+
+    .recommend-film__text {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .about-movie__text--description {
+        max-width: 360px;
+        font-size: 16px;
+    }
+
+
+    .about-movie__text--release-data {
+        padding: 5px 5px;
+        border-radius: 25px;
+        position: static;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .about-movie__text--tagline {
+        font-size: 12px;
+    }
+
+    .recommend-film__text-wrapper {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text {
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+}
+
+
+@media (max-width: 755px) {
+    .text__question {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .main__question {
+        width: 600px;
+    }
+
+    /* .radio-input__question {
+        font-size: 20px;
+    } */
+    input[type=radio] {
+        width: 15px;
+        height: 15px;
+    }
+
+    .weather__desc {
+        font-size: 20px;
+    }
+
+    .next {
+        font-size: 18px;
+        margin-right: 15px;
+    }
+
+    .radio-input__question {
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 634px) {
+    .text__question {
+        font-size: 22px;
+    }
+    .main__question {
+        width: 500px;
+    }
+
+    .radio-input__question {
+        font-size: 20px;
+    }
+    input[type=radio] {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 521px) {
+    /* .about-movie__img {
+        width: 100%;
+        height: 400px;
+    }
+
+    .about-movie__text--release-data {
+        padding: 5px 5px;
+        position: static;
+        border-radius: 25px;
+        font-size: 12px;
+    }
+
+    .about-movie__text--description {
+        max-width: 360px;
+        font-size: 13px;
+    }
+
+
+    .recommend-film__text {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 22px;
+        max-width: 100%;
+        margin-bottom: 15px;
+    } */
+
+    .recommend-film  {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 5px;
+        /* width: 700px; */
+    }
+
+    .recommend-film__text {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .about-movie__text--description {
+        max-width: 360px;
+        font-size: 16px;
+    }
+
+
+    .about-movie__text--release-data {
+        padding: 5px 5px;
+        border-radius: 25px;
+        position: static;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .about-movie__text--tagline {
+        font-size: 12px;
+    }
+
+    .recommend-film__text-wrapper {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text {
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+
+
+    .img__question {
+        width: 500px;
+    }
+
+    .main__question {
+        width: 350px;
+    }
+
+    .text__question {
+        font-size: 18px;
+    }
+
+    .radio-input__question {
+        font-size: 15px;
+    }
+    input[type=radio] {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+
+@media (max-width: 375px) {
+     /* .about-movie__img {
+        width: 100%;
+        height: 300px;
+    }    
+
+    .about-movie__text--release-data {
+        position: static;
+        font-size: 10px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 22px;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }  */
+
+    .recommend-film  {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 5px;
+        /* width: 700px; */
+    }
+
+    .recommend-film__text {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .about-movie__text--description {
+        max-width: 360px;
+        font-size: 16px;
+    }
+
+
+    .about-movie__text--release-data {
+        padding: 5px 5px;
+        border-radius: 25px;
+        position: static;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text--title {
+        margin-right: 0px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .about-movie__text--tagline {
+        font-size: 12px;
+    }
+
+    .recommend-film__text-wrapper {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__img-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .about-movie__text {
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+
+
+    .img__question {
+        width: 100%;
+    }
+
+    .main__question {
+        width: 90%;
+    }
+
+    .text__question {
+        font-size: 18px;
+    }
+
+    .radio-input__question {
+        font-size: 15px;
+    }
+    input[type=radio] {
+        width: 12px;
+        height: 12px;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .next {
+        width: 150px;
+    }
+
+    .text__question {
+        font-size: 16px;
+    }
+
+    .radio-input__question {
+        font-size: 15px;
+    }
+}
+
+/* @media screen and (max-width: 960) {
+    /* .recommend-film__text-wrapper .recommend-film__text { 
+      font-size: 15px;
+    }  */
+    /* .recommend-film {
+      width: 700px;
+    } */
+/* }  */
+
+/* @media screen and (max-width: 830) {
+    /* .recommend-film__text-wrapper .recommend-film__text { 
+      font-size: 15px;
+    }  */
+    /* .recommend-film {
+      width: 580px;
+    }
+} */ 
