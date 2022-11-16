@@ -67,11 +67,14 @@ takeOffCirclesClick()
 
 // Add Image and give stylish
 const addImg = function (imgPath) {
-    allImages.forEach((el, idx) => {
+    allImages.forEach((el, idx, arr) => {
         el.src = `img/${imgPath[idx]}`;
         el.alt = imgArr[idx].split('-')[0];
         const html = `${el.alt[0].toUpperCase().concat(el.alt.slice(1))} weather`;
-        el.insertAdjacentHTML('beforebegin', `<p class="weather__desc">${html}</p>`);
+        el.insertAdjacentHTML('beforebegin', `
+        <p class="weather__desc">${html}</p>
+        <p>${idx+1}/${arr.length}</p>
+        `);
     });
 };
 addImg(imgArr);
@@ -119,12 +122,11 @@ const changeBackgroundColorOfElements = function () {
     weatherDesc[i].style.color = backgroundColorOfWeather[i];
     weatherDesc[i].style.color = backgroundColorOfWeather[i];
     weatherDesc[i].style.textAlign = 'center';
-
     circlesLi.forEach((el, idx, arr) => changeColorCircle(el, idx, arr))
     radioInputChangeText()
     changeColorTextQuestion()
 }
-changeBackgroundColorOfElements()
+changeBackgroundColorOfElements();
 
 // Functions
 
@@ -134,7 +136,9 @@ const resetData = function () {
     formattedWeather = [];
     checkedDatas = [];
     inputRadioQuestionAll.forEach((el) => console.log(el.checked = false));
-    console.clear()
+    console.clear();
+    changeStateVisibleQuestion();
+    changeBackgroundColorOfElements();
 }
 
 const changeStateVisibleQuestion = function () {
@@ -167,7 +171,11 @@ for (const [weather, category] of Object.entries(user.likeCategory)) {
 
 
 
+const createError = function(err) {
+    const html = `<p style="color: red; weight: 600; font-size: 40px">Something Went Wrong! ${err}</p>`
 
+    document.querySelector('.main').insertAdjacentHTML('afterbegin', html)
+}
 
 const next = function () {
     changeStateVisibleQuestion()
@@ -187,6 +195,8 @@ const next = function () {
                     const { latitude: lat, longitude: lng } = data.coords;
                     console.log(lat, lng);
                     return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${weatherApiKey}`)
+                }).catch((err) => {
+                    createError(err.message)
                 }).then((res) => {
                     return res.json()
                 }).then((data) => {
@@ -240,6 +250,22 @@ const next = function () {
                     console.log(lengthFilms, getRandomFilm, release_date, title, id, overview)
                     console.log(data)
 
+                    if(!release_date) {
+                        recommendFilm.insertAdjacentHTML('beforeend', 
+                        `
+                            <div class="about-movie">
+                                <p class="about-movie__text about-movie__text--title">${title}</p>
+    
+    
+                                <div class="about-movie__img-wrapper">
+                                <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}">
+                                </div>
+                            
+                                <p class="about-movie__text about-movie__text--description">${overview}</p>
+                                <p class="about-movie__text">Average vote: ${vote_average} imDb</p>
+                    
+                            </div>`)
+                    }
 
                     recommendFilm.insertAdjacentHTML('beforeend', 
                     `
@@ -294,16 +320,16 @@ const next = function () {
                             </div>
                             `);
                 })
-    } else if (result.isDenied) {
-        resetData()
-        changeStateVisibleQuestion()
-        changeBackgroundColorOfElements()
-    }
+            } else if (result.isDenied) {
+                resetData()
+            } else if(result.isDismissed) {
+                resetData()
+            }
 })
     } else {
     i++
     changeBackgroundColorOfElements()
-}
+    }
 changeStateVisibleQuestion()
 }
 
@@ -363,8 +389,6 @@ resetButtonAll.forEach((el) => {
             if (response.isConfirmed) {
                 changeStateVisibleQuestion();
                 resetData();
-                changeStateVisibleQuestion();
-                changeBackgroundColorOfElements();
             }
         })
     })

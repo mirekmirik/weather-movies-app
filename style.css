@@ -109,6 +109,11 @@ body {
     /* color: #fff; */
 };
 
+input[type=radio] {
+    width: 45px;
+    height: 45px;
+}
+
 
 
 
@@ -598,6 +603,10 @@ hr {
         /* width: 700px; */
     }
 
+    .weather__desc {
+        margin-bottom: 5px;
+    }
+
     .recommend-film__text {
         font-size: 12px;
         font-weight: 400;
@@ -758,7 +767,7 @@ hr {
 
 @media (max-width: 634px) {
     .text__question {
-        font-size: 22px;
+        font-size: 20px;
     }
     .main__question {
         width: 500px;
@@ -770,6 +779,10 @@ hr {
     input[type=radio] {
         width: 15px;
         height: 15px;
+    }
+
+    .next {
+        padding: 5px 5px;
     }
 }
 
@@ -979,10 +992,12 @@ hr {
 
     .text__question {
         font-size: 18px;
+        margin-bottom: 5px;
     }
 
     .radio-input__question {
         font-size: 15px;
+        margin-bottom: 5px;
     }
     input[type=radio] {
         width: 12px;
