@@ -260,9 +260,13 @@ const next = function () {
                                 <div class="about-movie__img-wrapper">
                                 <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}">
                                 </div>
-                            
-                                <p class="about-movie__text about-movie__text--description">${overview}</p>
-                                <p class="about-movie__text">Average vote: ${vote_average} imDb</p>
+                                <p class="about-movie__text"><span class="about-movie__span">Average vote: </span>${vote_average} imDb</p>
+                                <hr class="img__hr">
+                                
+                                <p class="about-movie__text about-movie__text--description">
+                                <span class="about-movie__span">Overview:</span>
+                                ${overview}
+                                </p>
                     
                             </div>`)
                     }
@@ -272,14 +276,16 @@ const next = function () {
                         <div class="about-movie">
                             <p class="about-movie__text about-movie__text--title">${title}</p>
 
-                            <p class="about-movie__text about-movie__text--release-data">Year: ${release_date.split('-')[0]}</p>
+                            <p class="about-movie__text about-movie__text--release-data">${release_date.split('-')[0]}</p>
 
                             <div class="about-movie__img-wrapper">
                             <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}">
                             </div>
-                        
-                            <p class="about-movie__text about-movie__text--description">${overview}</p>
-                            <p class="about-movie__text">Average vote: ${vote_average} imDb</p>
+                            <p class="about-movie__text"><span class="about-movie__span">Average vote: </span>${vote_average} imDb</p>
+                            <hr class="img__hr">
+                            
+                            <p class="about-movie__text about-movie__text--description"><span class="about-movie__span">Overview: </span>${overview}</p>
+                    
                 
                         </div>`)
 
@@ -297,13 +303,13 @@ const next = function () {
                     if(budget) {
                         imgWrapper.insertAdjacentHTML('afterend',
                             `
-                            <p class="about-movie__text about-movie__text--budget">Budget: ${budget}$</p>
+                            <p class="about-movie__text about-movie__text--budget"><span class="about-movie__span">Budget: </span> ${budget}$</p>
                             `)
                     };
                     if (tagline) {
                         imgWrapper.insertAdjacentHTML('afterend',
                             `<div class="about-movie__tagline-wrapper">
-                            <p class="about-movie__text about-movie__text--tagline">${tagline}</p>
+                            <p class="about-movie__text about-movie__text--tagline"><span class="about-movie__span">Tags: </span>${tagline}</p>
                             </div>`)
                     };
                     const jenresOfFilm = [];
@@ -313,10 +319,13 @@ const next = function () {
                     });
                     imgWrapper.insertAdjacentHTML('afterend', `
                             <div class="about-movie__wrapper-info-data">
-                               <p class="about-movie__text about-movie__text-country"></p>
-                                <p class="about-movie__text about-movie__text-jenres">${jenresOfFilm.join(', ')}
-                                
-                                <p class="about-movie__text about-movie__text-status">${status}</p>
+                                <p class="about-movie__text about-movie__text-jenres">
+                                <span class="about-movie__span">Jenres: </span>
+                                 ${jenresOfFilm.join(', ')}
+                                <p class="about-movie__text about-movie__text-status">
+                                <span class="about-movie__span">Status: </span>
+                                ${status}
+                                </p>
                             </div>
                             `);
                 })
