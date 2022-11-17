@@ -177,6 +177,30 @@ const createError = function(err) {
     document.querySelector('.main').insertAdjacentHTML('afterbegin', html)
 }
 
+const nextFilm = function() {
+    let btnFilmNext = document.querySelectorAll('.btn__film-next')
+    let aboutMovies = document.querySelectorAll('.about-movie')
+    let i = 0;
+
+    btnFilmNext.forEach((el) => {
+        el.addEventListener('click', function () {
+            if (i == aboutMovies.length - 1) {
+                aboutMovies[i].classList.toggle('about-movie--active')
+                aboutMovies[i].classList.toggle('none')
+                i = 0;
+                aboutMovies[i].classList.toggle('about-movie--active')
+                aboutMovies[i].classList.toggle('none')
+            } else {
+                aboutMovies[i].classList.toggle('about-movie--active')
+                aboutMovies[i].classList.toggle('none')
+                i++
+                aboutMovies[i].classList.toggle('about-movie--active')
+                aboutMovies[i].classList.toggle('none')
+            }
+        })
+    })
+}
+
 const next = function () {
     changeStateVisibleQuestion()
     if (i == allQuestions.length - 1) {
@@ -224,7 +248,7 @@ const next = function () {
                         </div>
                         
                          <p class="recommend-film__text">You like ${categoryForThisWeather}'s in ${data.weather[0].main} weather</p>
-                         <p class="recommend-film__text movie">So this movie for you!</p>
+                         <p class="recommend-film__text movie">So this <span style="color: red;">3</span> movies!! for you!</p>
                          </div>
                          <hr>
                          `
@@ -233,26 +257,41 @@ const next = function () {
                 }).then((res) => {
                     return res.json()
                 }).then((data) => {
-                    const getRandom = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
+                    const getRandomPage = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
                     data.genres.find((el) => {
                         if (el.name.toLowerCase() == categoryForThisWeather) {
                             filmId = el.id
                         }
                     })
-                    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${movieApiKey}&with_genres=${filmId}&page=${getRandom}`)
+                    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${movieApiKey}&with_genres=${filmId}&page=${getRandomPage}`)
                 }).then((res) => {
                     return res.json()
                 }).then((data) => {
                     let lengthFilms = data.results.length;
+                    let getRandomFilm1 = getRandomInt(0, lengthFilms)
+                    let getRandomFilm2 = getRandomInt(0, lengthFilms)
+                    let getRandomFilm3 = getRandomInt(0, lengthFilms)
+                    console.log(getRandomFilm1, getRandomFilm2, getRandomFilm3)
+                    if (getRandomFilm1 == getRandomFilm2) {
+                        getRandomFilm2 = getRandomInt(0, lengthFilms)
+                    }
+                    if (getRandomFilm2 == getRandomFilm3) {
+                        getRandomFilm3 = getRandomInt(0, lengthFilms)
+                    }
 
-                    const getRandomFilm = Math.floor(Math.random() * (lengthFilms - 1 + 1)) + 1;
-                    const { release_date, title, overview, vote_average, id, poster_path } = data.results[getRandomFilm]
-                    console.log(lengthFilms, getRandomFilm, release_date, title, id, overview)
-                    console.log(data)
+                    console.log(getRandomFilm1, getRandomFilm2, getRandomFilm3)
+                    // const getRandomFilm = Math.floor(Math.random() * (lengthFilms - 1 + 1)) + 1;
+                    const { release_date, title, overview, vote_average, id, poster_path } = data.results[getRandomFilm1];
+                    const { release_date: release_date1, title: title1, overview: overview1, vote_average: vote_average1, id: id1, poster_path: poster_path1 } = data.results[getRandomFilm2]
+                    const { release_date: release_date2, title: title2, overview: overview2, vote_average: vote_average2, id: id2, poster_path: poster_path2 } = data.results[getRandomFilm3]
 
-                    if(!release_date) {
-                        recommendFilm.insertAdjacentHTML('beforeend', 
-                        `
+                    console.log(data.results[getRandomFilm3])
+                    // console.log(lengthFilms, getRandomFilm1, release_date, title, id, overview)
+                    // console.log(data)
+
+                    if (!release_date) {
+                        recommendFilm.insertAdjacentHTML('beforeend',
+                            `
                             <div class="about-movie">
                                 <p class="about-movie__text about-movie__text--title">${title}</p>
     
@@ -268,13 +307,49 @@ const next = function () {
                                 ${overview}
                                 </p>
                     
-                            </div>`)
+                            </div>
+                            
+                            <div class="about-movie none">
+                            <p class="about-movie__text about-movie__text--title">${title1}</p>
+  
+                              <p class="about-movie__text about-movie__text--release-data">${release_date1.split('-')[0]}</p>
+  
+                              <div class="about-movie__img-wrapper">
+                              <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path1}" alt="${title1}">
+                              </div>
+                              <p class="about-movie__text"><span class="about-movie__span">Average vote: </span>${vote_average1} imDb</p>
+                              <hr class="img__hr">
+                              
+                              <p class="about-movie__text about-movie__text--description"><span class="about-movie__span">Overview: </span>${overview1}</p>
+                      
+  
+                  
+                          </div>
+  
+                          <div class="about-movie none">
+                            <p class="about-movie__text about-movie__text--title">${title2}</p>
+  
+                              <p class="about-movie__text about-movie__text--release-data">${release_date2.split('-')[0]}</p>
+  
+                              <div class="about-movie__img-wrapper">
+                              <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path2}" alt="${title2}">
+                              </div>
+                              <p class="about-movie__text"><span class="about-movie__span">Average vote: </span>${vote_average2} imDb</p>
+                              <hr class="img__hr">
+                              
+                              <p class="about-movie__text about-movie__text--description"><span class="about-movie__span">Overview: </span>${overview2}</p>
+                      
+  
+                  
+                          </div>`
+
+                        )
                     }
 
-                    recommendFilm.insertAdjacentHTML('beforeend', 
-                    `
-                        <div class="about-movie">
-                            <p class="about-movie__text about-movie__text--title">${title}</p>
+                    recommendFilm.insertAdjacentHTML('beforeend',
+                        `
+                        <div class="about-movie about-movie--active">
+                          <p class="about-movie__text about-movie__text--title">${title}</p>
 
                             <p class="about-movie__text about-movie__text--release-data">${release_date.split('-')[0]}</p>
 
@@ -286,63 +361,103 @@ const next = function () {
                             
                             <p class="about-movie__text about-movie__text--description"><span class="about-movie__span">Overview: </span>${overview}</p>
                     
-                
-                        </div>`)
 
-                    return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${movieApiKey}&language=en-US`)
-                }).then((res) => {
-                    return res.json()
-                }).then((data) => {
-                    console.log(data)
-                    console.log(data.overview)
-                    console.log(data.tagline)
-                    const { tagline, status, budget} = data
-                    console.log(data.production_contries)
-                    // console.log(production_contries.forEach((el) => el.name))
-                    let imgWrapper = document.querySelector('.about-movie__img-wrapper')
-                    if(budget) {
-                        imgWrapper.insertAdjacentHTML('afterend',
-                            `
-                            <p class="about-movie__text about-movie__text--budget"><span class="about-movie__span">Budget: </span> ${budget}$</p>
-                            `)
-                    };
-                    if (tagline) {
-                        imgWrapper.insertAdjacentHTML('afterend',
-                            `<div class="about-movie__tagline-wrapper">
-                            <p class="about-movie__text about-movie__text--tagline"><span class="about-movie__span">Tags: </span>${tagline}</p>
-                            </div>`)
-                    };
-                    const jenresOfFilm = [];
-                    data.genres.forEach((el) => {
-                        console.log(el.name);
-                        jenresOfFilm.push(el.name);
-                    });
-                    imgWrapper.insertAdjacentHTML('afterend', `
-                            <div class="about-movie__wrapper-info-data">
-                                <p class="about-movie__text about-movie__text-jenres">
-                                <span class="about-movie__span">Jenres: </span>
-                                 ${jenresOfFilm.join(', ')}
-                                <p class="about-movie__text about-movie__text-status">
-                                <span class="about-movie__span">Status: </span>
-                                ${status}
-                                </p>
+                
+                        </div>
+                        <div class="about-movie none">
+                          <p class="about-movie__text about-movie__text--title">${title1}</p>
+
+                            <p class="about-movie__text about-movie__text--release-data">${release_date1.split('-')[0]}</p>
+
+                            <div class="about-movie__img-wrapper">
+                            <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path1}" alt="${title1}">
                             </div>
-                            `);
+                            <p class="about-movie__text"><span class="about-movie__span">Average vote: </span>${vote_average1} imDb</p>
+                            <hr class="img__hr">
+                            
+                            <p class="about-movie__text about-movie__text--description"><span class="about-movie__span">Overview: </span>${overview1}</p>
+                    
+
+                
+                        </div>
+
+                        <div class="about-movie none">
+                          <p class="about-movie__text about-movie__text--title">${title2}</p>
+
+                            <p class="about-movie__text about-movie__text--release-data">${release_date2.split('-')[0]}</p>
+
+                            <div class="about-movie__img-wrapper">
+                            <img class="about-movie__img" src="https://image.tmdb.org/t/p/w500/${poster_path2}" alt="${title2}">
+                            </div>
+                            <p class="about-movie__text"><span class="about-movie__span">Average vote: </span>${vote_average2} imDb</p>
+                            <hr class="img__hr">
+                            
+                            <p class="about-movie__text about-movie__text--description"><span class="about-movie__span">Overview: </span>${overview2}</p>
+                    
+
+                
+                        </div>`
+                    )
+
+                    return Promise.all([
+                        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${movieApiKey}&language=en-US`),
+                        fetch(`https://api.themoviedb.org/3/movie/${id1}?api_key=${movieApiKey}&language=en-US`),
+                        fetch(`https://api.themoviedb.org/3/movie/${id2}?api_key=${movieApiKey}&language=en-US`)])
+                }).then((res) => {
+                    return Promise.all(res.map((el) => el.json()))
+                }).then((data) => {
+                    data.forEach((el, idx) => {
+
+                        let imgWrapper = document.querySelectorAll('.about-movie__img-wrapper')[idx]
+                        if (el.budget) {
+                            imgWrapper.insertAdjacentHTML('afterend',
+                                `
+                                    <p class="about-movie__text about-movie__text--budget"><span class="about-movie__span">Budget: </span> ${el.budget}$</p>
+                                    `)
+                        };
+                        if (el.tagline) {
+                            imgWrapper.insertAdjacentHTML('afterend',
+                                `<div class="about-movie__tagline-wrapper">
+                                    <p class="about-movie__text about-movie__text--tagline"><span class="about-movie__span">Tags: </span>${el.tagline}</p>
+                                    </div>`)
+                        };
+                        const jenresOfFilm = [];
+                        el.genres.forEach((el) => {
+                            console.log(el.name);
+                            jenresOfFilm.push(el.name);
+                        });
+                        imgWrapper.insertAdjacentHTML('afterend', `
+                                    <div class="about-movie__wrapper-info-data">
+                                        <p class="about-movie__text about-movie__text-jenres">
+                                        <span class="about-movie__span">Jenres: </span>
+                                         ${jenresOfFilm.join(', ')}
+                                        <p class="about-movie__text about-movie__text-status">
+                                        <span class="about-movie__span">Status: </span>
+                                        ${el.status}
+                                        </p>
+                                    </div>
+                                    `);
+
+                        let description = document.querySelectorAll('.about-movie__text--description')[idx]
+                        description.insertAdjacentHTML('afterend',
+                            `<button type="button" class="btn__film-next">Another film</button>`)
+                    })
+                    nextFilm()
+
+
                 })
             } else if (result.isDenied) {
                 resetData()
-            } else if(result.isDismissed) {
+            } else if (result.isDismissed) {
                 resetData()
             }
-})
+        })
     } else {
-    i++
-    changeBackgroundColorOfElements()
+        i++
+        changeBackgroundColorOfElements()
     }
-changeStateVisibleQuestion()
+    changeStateVisibleQuestion()
 }
-
-
 
 let userLikesList = [] 
 
