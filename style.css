@@ -20,7 +20,7 @@ body {
     /* overflow: hidden; */
     /* background-color: rgba(49, 29, 69, 0.616); */
     /* position: relative; */
-    background-color: #000000e0;
+    background-color: #000000c9;
 }
 
 .main {
@@ -286,7 +286,7 @@ label {
     padding: 10px 10px;
     border-radius: 25px;
     color: rgb(251, 249, 249);
-    background-color: rgba(106, 46, 46, 0.604);
+    background-color: rgba(41, 183, 53, 0.604);
 }
 
 .about-movie__tagline-wrapper {
